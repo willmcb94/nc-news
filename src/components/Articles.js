@@ -12,7 +12,7 @@ const Articles = () => {
     })
     return (
         <div>
-            <h2>Articles</h2>
+
             <section className="main-section">
                 {articles.map((article, index) => {
                     return <ArticleCard key={`Article-${index}`} title={article.title} topic={article.topic} created_at={article.created_at} />

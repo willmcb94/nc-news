@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <section>
-            <header><h1>NC-News</h1></header>
-            <nav>
+            <header><h1 className="title">NC-News</h1></header>
+            <div className="nav-sub-header">
+                <h2 className="sub-header">Articles</h2>
+                <nav className="nav">
+                    <ul className="nav-ul">
+                        <li className="nav-text">Articles</li>
+                        <li className="nav-text">Users</li>
+                        <li className="nav-text">Sign in</li>
+                    </ul>
+                </nav>
+            </div>
 
-                <button>Articles</button>
-                <button>Users</button>
-                <button>Sign in</button>
-
-            </nav>
         </section>
     )
 }

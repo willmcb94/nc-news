@@ -1,11 +1,64 @@
+
+
 .App {
   text-align: center;
+  color: #233d4d;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 8vh;
+  color: #fe7f2d;
+  background-color: #233d4d;
+  min-width: 300px;
+  width: 25%;
+  margin-left: 17vh;
 }
 
-.article-card {
-  border: 3px solid black;
-  border-radius: 10px;
+.sub-header {
+  color: #fe7f2d;
+  background-color: #233d4d;
+  min-width: 110px;
+  width: 8%;
+  margin-left: 17vh;
 }
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+/* .nav-sub-header {
+  
+} */
+.nav-ul{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  color: #fe7f2d;
+  background-color: #233d4d;
+  padding: 1vh 2vh 1vh 2vh;
+  
+
+}
+.nav-text {
+  list-style: none;
+  font-weight: bold;
+
+}
+.article-card {
+  border-radius: 10px;
+  background-color: #fcca46;
+  color: #233d4d;
+  padding: 3vh;
+}
+
+.article-card:hover {
+  border-radius: 10px;
+  background-color: #233d4d;
+  color: #fe7f2d;
+  padding: 3vh;
+  transition: 1s;
+}
+
 
 .main-section {
   margin: auto;
@@ -13,4 +66,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 3vh;
+  
+  border-radius: 20px;
+  
 }
