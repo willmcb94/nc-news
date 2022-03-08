@@ -1,5 +1,9 @@
-
-
+.link{
+    all: unset;
+}
+.link:hover{
+  cursor: pointer;
+}
 .App {
   text-align: center;
   color: #233d4d;
@@ -144,6 +148,10 @@
   display: flex;
   justify-content: space-around;
   align-content: flex-end;
+}
+
+.article-page {
+  width: 80%;
 }
 
 @media only screen and (max-width: 550px) {

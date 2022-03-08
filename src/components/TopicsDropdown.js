@@ -25,7 +25,7 @@ const TopicsDropdown = ({ paramTopic }) => {
             navigate(`/articles`)
 
         } else {
-            navigate(`/articles/${value}`)
+            navigate(`/articles?topic=${value}`)
 
         }
     }
