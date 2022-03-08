@@ -3,7 +3,7 @@ import { useParams } from "react-router"
 import { fetchArticleById } from "../api"
 
 const ArticlePage = () => {
-    const [article, setArticle] = useState()
+    const [article, setArticle] = useState({})
     const { article_id } = useParams()
     console.log(article_id, 'article page')
 
@@ -12,20 +12,23 @@ const ArticlePage = () => {
             console.log(article, 'tester')
             setArticle(article)
         })
-    }, [])
-    console.log(article, 'articlepage')
+    }, [article_id])
+
+
     return (
-        <section className="article-page">
+        <section className="article-main-section">
             <h2>{article.title}</h2>
-
-            <p>{article.body}</p>
-            <h4>{article.author}</h4>
-            <dl>
-                <dt>{article.topic}</dt>
-                <dt>{article.votes}</dt>
-                <dt>{article.comments}</dt>
-
-            </dl>
+            <article className="article-body-info">
+                <p className="article-body">{article.body}</p>
+                <span className="article-info">
+                    <h4>{article.author}</h4>
+                    <dl>
+                        <dt>{article.topic}</dt>
+                        <dt>Votes - {article.votes}</dt>
+                        <dt>{article.comments}</dt>
+                    </dl>
+                </span>
+            </article>
         </section>
     )
 }

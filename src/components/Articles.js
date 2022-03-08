@@ -1,14 +1,15 @@
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
+
+import { useSearchParams } from "react-router-dom"
 import { fetchArticles } from "../api"
 import ArticleCard from "./ArticleCard"
 import TopicsDropdown from "./TopicsDropdown"
 
 
 const Articles = () => {
-    const { paramTopic } = useParams()
-
+    const [searchParams] = useSearchParams()
+    const paramTopic = searchParams.get('topic')
     const [articles, setArticles] = useState([])
 
     useEffect(() => {

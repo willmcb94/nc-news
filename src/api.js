@@ -3,20 +3,21 @@ import axios from "axios";
 
 export const fetchArticles = (topic) => {
 
-    if (!topic) {
-        return axios
-            .get(`https://will-nc-news.herokuapp.com/api/articles`)
-            .then(({ data: { articles } }) => {
+    // if (!topic) {
+    const params = { topic }
+    return axios
+        .get(`https://will-nc-news.herokuapp.com/api/articles`, { params })
+        .then(({ data: { articles } }) => {
 
-                return articles
-            })
-    } else {
-        return axios
-            .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
-            .then(({ data: { articles } }) => {
-                return articles
-            })
-    }
+            return articles
+        })
+    // } else {
+    //     return axios
+    //         .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
+    //         .then(({ data: { articles } }) => {
+    //             return articles
+    //         })
+    // }
 }
 
 export const fetchTopics = () => {
@@ -30,8 +31,8 @@ export const fetchTopics = () => {
 }
 
 export const fetchArticleById = (id) => {
-    console.log(`https://will-nc-news.herokuapp.com/api/articles/${id}`)
-    console.log(id, 'in api')
+
+
     return axios
         .get(`https://will-nc-news.herokuapp.com/api/articles/${id}`)
         .then((data) => {
