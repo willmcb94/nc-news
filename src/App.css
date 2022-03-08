@@ -1,10 +1,15 @@
-
-
+.link{
+    all: unset;
+}
+.link:hover{
+  cursor: pointer;
+}
 .App {
   text-align: center;
   color: #233d4d;
   display: flex;
   flex-direction: column;
+  
 }
 .title {
   font-size: 8vh;
@@ -146,6 +151,55 @@
   align-content: flex-end;
 }
 
+.article-main-section {
+  width: 80%;
+  margin: auto;
+  padding: 4vh;
+  border-radius: 10px;
+  background-color: #233d4d;
+  color: #233d4d;
+  margin-top: 10vh;
+}
+
+.article-body-info p{
+  font-weight: bold;
+  text-align: left;
+  
+}
+.article-body-info {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 65% 30%;
+  align-items: center;
+}
+
+.article-info {
+  
+  background-color: #233d4d;
+  color: #fcca46;
+  border-radius: 10px;
+  max-height: 75%;
+  
+  
+}
+
+.article-body{
+  background-color: #233d4d;
+  color: #fcca46;
+  padding: 2vh;
+  border-radius: 10px;
+ 
+}
+
+.article-main-section h2 {
+  font-weight: bold;
+  font-size: 4vh;
+  background-color: #233d4d;
+  color: #fefae0;;
+  max-width: 75%;
+  padding: 1vh 0vh 1vh 0vh;
+  margin: auto;
+}
 @media only screen and (max-width: 550px) {
   .sub-header-drop-down{
   

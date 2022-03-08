@@ -2,23 +2,26 @@ import axios from "axios";
 
 
 export const fetchArticles = (topic) => {
-    console.log(topic, 'in req')
-    if (!topic) {
-        return axios
-            .get(`https://will-nc-news.herokuapp.com/api/articles`)
-            .then(({ data: { articles } }) => {
-                return articles
-            })
-    } else {
-        return axios
-            .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
-            .then(({ data: { articles } }) => {
-                return articles
-            })
-    }
+
+    // if (!topic) {
+    const params = { topic }
+    return axios
+        .get(`https://will-nc-news.herokuapp.com/api/articles`, { params })
+        .then(({ data: { articles } }) => {
+
+            return articles
+        })
+    // } else {
+    //     return axios
+    //         .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
+    //         .then(({ data: { articles } }) => {
+    //             return articles
+    //         })
+    // }
 }
 
 export const fetchTopics = () => {
+
     return axios
         .get("https://will-nc-news.herokuapp.com/api/topics")
         .then(({ data: { topics } }) => {
@@ -27,11 +30,13 @@ export const fetchTopics = () => {
         })
 }
 
-// export const fetchArticlesByTopic = (topic) => {
-//     return axios
-//         .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
-//         .then(({ data: { articles } }) => {
+export const fetchArticleById = (id) => {
 
-//             return articles
-//         })
-// }
+
+    return axios
+        .get(`https://will-nc-news.herokuapp.com/api/articles/${id}`)
+        .then((data) => {
+
+            return data.data
+        })
+}
