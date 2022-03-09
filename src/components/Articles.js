@@ -11,30 +11,40 @@ const Articles = () => {
     const [searchParams] = useSearchParams()
     const paramTopic = searchParams.get('topic')
     const [articles, setArticles] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
 
     useEffect(() => {
+        setIsLoading(true)
         if (!paramTopic) {
             fetchArticles().then((articles) => {
 
                 setArticles(articles)
+                setIsLoading(false)
             })
         } else {
             fetchArticles(paramTopic).then((articles) => {
 
                 setArticles(articles)
+                setIsLoading(false)
             })
         }
+
     }, [paramTopic])
 
+    if (isLoading) {
+        return <h2>Loading...</h2>
+    }
 
     return (
         <div className="main-section">
+
             <div className="sub-header-drop-down">
                 <div className="sub-header-div">
                     <h2 className="sub-header">Articles</h2>
                 </div>
                 <div className="topics-dropdown-div">
-                    <TopicsDropdown paramTopic={paramTopic} />
+                    <TopicsDropdown paramTopic={paramTopic} isLoading={isLoading} setIsLoading={setIsLoading} />
                 </div>
             </div>
             <section className="articles-container">
