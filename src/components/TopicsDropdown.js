@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { fetchTopics } from "../api"
 
-const TopicsDropdown = ({ paramTopic }) => {
+const TopicsDropdown = ({ paramTopic, isLoading, setIsLoading }) => {
 
     if (paramTopic === undefined) {
         paramTopic = 'All'
@@ -13,9 +13,11 @@ const TopicsDropdown = ({ paramTopic }) => {
     let navigate = useNavigate()
 
     useEffect(() => {
+
         fetchTopics().then((topics) => {
 
             setTopics(topics)
+
         });
     }, [])
 

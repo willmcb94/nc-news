@@ -40,3 +40,9 @@ export const fetchArticleById = (id) => {
             return data.data
         })
 }
+
+export const patchArticleVote = (id, voteUpdate) => {
+    return axios
+        .patch(`https://will-nc-news.herokuapp.com/api/articles/${id}`, voteUpdate)
+
+}
