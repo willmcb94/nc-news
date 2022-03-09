@@ -161,12 +161,18 @@
 .article-main-section {
   width: 80%;
   margin: auto;
-  padding: 4vh;
+  padding: 4vh 4vh 0vh 4vh;
   border-radius: 10px;
   background-color: #233d4d;
   color: #233d4d;
-  margin-top: 10vh;
+  margin-top: 6vh;
+ margin-bottom: 4vh
 }
+.view-comment {
+  color:#fcca46;
+  
+}
+
 
 .article-body-info p{
   font-weight: bold;
@@ -174,19 +180,25 @@
   
 }
 .article-body-info {
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: 65% 30%;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: space-between;
   color:#fe7f2d;
+  
 }
 
 .article-info {
-  
+  width: 80%;
+  font-weight: bold;
+  display: flex;
   background-color: #233d4d;
   color: #fe7f2d;
   border-radius: 10px;
+  align-items: center;
+  justify-content: space-around;
   max-height: 75%;
+  margin-bottom: 1.2vh;
   
   
 }
@@ -216,6 +228,7 @@
 
 .vote-span {
   display: flex;
+  align-items: center;
   font-size: 3vh;
   font-weight: bold;
   border-radius: 10px;
@@ -225,7 +238,9 @@
 
 .article-body-vote {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  
 }
 @media only screen and (max-width: 550px) {
   .sub-header-drop-down{
@@ -308,6 +323,14 @@
   min-width: 300px;
   padding: 1vh 2vh 1vh 2vh;
   
+  
+}
+.article-info {
+  
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1vh;
   
 }
 }
