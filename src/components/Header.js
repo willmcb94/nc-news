@@ -10,8 +10,8 @@ const Header = () => {
 
                     <ul className="nav-ul">
                         <Link to="/articles" className="nav-text link">Articles</Link>
-                        <li className="nav-text">Users</li>
-                        <li className="nav-text">Sign in</li>
+                        <Link to="/users" className="nav-text link">Users</Link>
+                        <li className="nav-text link">Sign in</li>
                     </ul>
                 </nav>
             </div>

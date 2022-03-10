@@ -46,3 +46,21 @@ export const patchArticleVote = (id, voteUpdate) => {
         .patch(`https://will-nc-news.herokuapp.com/api/articles/${id}`, voteUpdate)
 
 }
+
+export const getComments = (id) => {
+
+    return axios
+        .get(`https://will-nc-news.herokuapp.com/api/articles/${id.id}/comments`).then(({ data }) => {
+
+            return data.comments
+        })
+}
+
+export const getUsers = () => {
+    return axios
+        .get(`https://will-nc-news.herokuapp.com/api/users`)
+        .then(({ data: { users } }) => {
+
+            return users
+        })
+}
