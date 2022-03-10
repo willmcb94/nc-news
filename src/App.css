@@ -248,14 +248,6 @@
   
 }
 
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-.visible {
-  visibility: visible;
-}
-
 .view-comment {
 
   color:#fcca46;
@@ -283,8 +275,8 @@
 }
 
 .comment-input {
-  width: 70%;
-  height: 40%;
+  width: 80%;
+  height: 100%;
 }
 
 .comment-post {
@@ -298,6 +290,60 @@
 .comment-post h3 {
   margin: 0.5px;
 }
+
+
+.comment-form {
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+
+.user-card {
+  display: flex;
+  background-color: #233d4d;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fe7f2d;
+  align-items: center;
+  border-radius: 10px;
+  height: 100%
+  
+}
+
+.avatar {
+  height: auto; 
+    width: auto; 
+    max-width: 200px; 
+    max-height: 200px;
+    border-radius: 50px;
+}
+
+.users-contain{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  margin: 5vh;
+  grid-gap: 3vh;
+
+}
+.sign-in {
+  color: #fcca46;
+  padding-bottom: 4vh;
+  margin-top: 3vh;
+  justify-content: space-between;
+  display: flex;
+  align-items: flex-end;
+}
+
+
 @media only screen and (max-width: 550px) {
 
   .sub-header-drop-down{

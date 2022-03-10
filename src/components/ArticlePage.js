@@ -14,7 +14,7 @@ const ArticlePage = () => {
 
     const [article, setArticle] = useState({})
     const { article_id } = useParams()
-
+    const [isLoading, setIsLoading] = useState(true)
     const [voteChange, setVoteChange] = useState(0);
     const [showComments, setShowComments] = useState(false)
 
@@ -24,7 +24,7 @@ const ArticlePage = () => {
 
             article.date = article.created_at.slice(3, 21)
             setArticle(article)
-
+            setIsLoading(false)
 
         })
     }, [article_id, showComments])
@@ -39,11 +39,11 @@ const ArticlePage = () => {
             alert("Vote unsuccesful please try again")
         }
     }
-    const handleCommentClick = () => {
-        setShowComments(!showComments)
+
+
+    if (isLoading) {
+        return <h2>Loading...</h2>
     }
-
-
     return (
         <section>
             <section className="article-main-section">
@@ -57,16 +57,18 @@ const ArticlePage = () => {
                             <IconButton color="error" onClick={() => { handleVote(-1) }} disabled={voteChange === -1} ><ThumbDownIcon className="vote" /></IconButton>
                         </span>
                         <span className="article-info">
+
                             <dt>{`Author: ${article.author}`}</dt>
                             <dt>{`Topic: ${article.topic}`}</dt>
                             <dt>{article.date}</dt>
-                            <IconButton onClick={() => { handleCommentClick() }}><CommentIcon className="view-comment" /> </IconButton>
+
+                            <IconButton onClick={() => { setShowComments(showComments => !showComments) }}><CommentIcon className="view-comment" /> </IconButton>
                         </span>
                     </span>
                 </article>
             </section>
 
-            {showComments ? <Comments id={article_id} className="visible" /> : <Comments className="hidden" id={article_id} />}
+            {showComments ? <Comments id={article_id} /> : null}
 
 
 
