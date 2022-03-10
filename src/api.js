@@ -64,3 +64,14 @@ export const getUsers = () => {
             return users
         })
 }
+
+export const postComment = ({ id }, body) => {
+
+    console.log(id)
+    return axios
+        .post(`https://will-nc-news.herokuapp.com/api/articles/${id.id}/comments`, body)
+        .then(({ data: { comment } }) => {
+            console.log(comment)
+            return comment
+        })
+}

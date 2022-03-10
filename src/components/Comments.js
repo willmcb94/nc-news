@@ -1,9 +1,13 @@
+
 import { useEffect, useState } from "react"
 import { getComments } from "../api"
 import CommentCard from "./CommentCard"
 
+import PostComment from "./PostComment";
+
 const Comments = (id) => {
     const [comments, setComments] = useState([])
+
 
     useEffect(() => {
         getComments(id).then((commentsGot) => {
@@ -14,14 +18,15 @@ const Comments = (id) => {
     }, [id])
 
     return (
+
+
         <section className="comments-holder">
-            <section className="comment-post"><h3>Post a comment</h3>
-                <input className="comment-input"></input>
-            </section>
+            <PostComment id={id} />
             {comments.map((comment, index) => {
                 return <CommentCard key={`Comment-${index}`} author={comment.author} date={comment.created_at} body={comment.body} />
             })}
         </section>
+
     )
 
 }

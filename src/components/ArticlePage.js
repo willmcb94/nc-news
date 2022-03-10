@@ -39,9 +39,7 @@ const ArticlePage = () => {
             alert("Vote unsuccesful please try again")
         }
     }
-    const handleCommentClick = () => {
-        setShowComments(!showComments)
-    }
+
 
 
     return (
@@ -60,13 +58,13 @@ const ArticlePage = () => {
                             <dt>{`Author: ${article.author}`}</dt>
                             <dt>{`Topic: ${article.topic}`}</dt>
                             <dt>{article.date}</dt>
-                            <IconButton onClick={() => { handleCommentClick() }}><CommentIcon className="view-comment" /> </IconButton>
+                            <IconButton onClick={() => { setShowComments(showComments => !showComments) }}><CommentIcon className="view-comment" /> </IconButton>
                         </span>
                     </span>
                 </article>
             </section>
 
-            {showComments ? <Comments id={article_id} className="visible" /> : <Comments className="hidden" id={article_id} />}
+            {showComments ? <Comments id={article_id} /> : null}
 
 
 
