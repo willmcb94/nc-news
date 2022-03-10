@@ -21,7 +21,7 @@ const Comments = (id) => {
 
 
         <section className="comments-holder">
-            <PostComment id={id} />
+            <PostComment id={id} setComments={setComments} />
             {comments.map((comment, index) => {
                 return <CommentCard key={`Comment-${index}`} author={comment.author} date={comment.created_at} body={comment.body} />
             })}

@@ -1,8 +1,15 @@
+import LoginIcon from '@mui/icons-material/Login';
+
 const UserCard = ({ username, avatar_url }) => {
     return (
-        <section>
+        <section className="user-card">
             <h3>{username}</h3>
-            <img src={avatar_url} alt={`${username} avatar`} />
+            <img className="avatar" src={avatar_url} alt={`${username} avatar`} />
+            <span className="sign-in">
+                <label >SIGN IN</label>
+                <LoginIcon />
+            </span>
+
         </section>
     )
 }

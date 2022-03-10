@@ -3,7 +3,7 @@ import { Button } from "@mui/material"
 import { useState } from 'react';
 import { postComment } from '../api';
 
-const PostComment = (id) => {
+const PostComment = ({ id, setComments }) => {
     const initialValues = {
         username: "jessjelly",
         body: ""
@@ -16,6 +16,7 @@ const PostComment = (id) => {
 
             setPostValue({ ...initialValues, [field]: value });
 
+
         };
     };
 
@@ -25,6 +26,10 @@ const PostComment = (id) => {
             const comment = await postComment(id, postValue)
             console.log(comment)
             alert(`Comment posted - ${comment.body}`)
+            setComments((currentComments) => {
+                return [...currentComments, comment]
+            })
+            setPostValue(initialValues)
         } catch (err) {
             console.log(err)
             alert(`Comment failed to post - please try again`)
