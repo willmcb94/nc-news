@@ -1,12 +1,19 @@
+import { Button } from "@mui/material"
 import { useContext } from "react"
 import { commentDelete } from "../api"
 import { UserContext } from "../contexts.js/UserContext"
 
-const CommentCard = ({ author, body, date, comment_id, setComments }) => {
+const CommentCard = ({ author, body, date, comment_id, setComments, comments }) => {
 
     const { user } = useContext(UserContext)
     date = `${date.slice(0, 10)} ${date.slice(11, 16)} `
     const handleDelete = async () => {
+        const deleted = comments.filter(comment => {
+            return comment.comment_ud === comment_id
+        })
+
+        console.log(deleted)
+
         try {
             setComments((currentComments) => {
                 return currentComments.filter(comment => {
@@ -18,6 +25,9 @@ const CommentCard = ({ author, body, date, comment_id, setComments }) => {
 
         } catch (err) {
 
+            setComments((currentComments) => {
+                return [...currentComments, deleted]
+            })
             alert('Failed to delete comment')
         }
     }
@@ -26,9 +36,14 @@ const CommentCard = ({ author, body, date, comment_id, setComments }) => {
             <h3>{author}</h3>
             <p>{body}</p>
             <dt>{date}</dt>
-            {user === author ? <button onClick={() => handleDelete(comment_id)}>Delete</button> : <button className="hidden">Delete</button>}
+            <div className="delete-holder">
+                {user === author ? <Button size="small" variant="outlined" color="error" onClick={() => handleDelete(comment_id)}>
+                    Delete
+                </Button> : <button className="hidden">Delete</button>}
+            </div>
         </section>
     )
 }
+
 
 export default CommentCard

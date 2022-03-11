@@ -279,6 +279,7 @@
   width: 70%;
   display: grid;
   grid-template-columns: 80%;
+  align-items: center;
   justify-content: center;
 
 }
@@ -302,6 +303,7 @@
   color: #233d4d;
   text-align: left;
   margin: 1vh;
+  height: 50%;
   background-color: #fefae0;
   border-radius: 10px;
   padding: 2vh 4vh 2vh 4vh
@@ -373,6 +375,16 @@
   display: none;
 }
 
+.delete-holder {
+  
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.err-success {
+  padding-top: 1vh;
+  font-size: 2vh;
+}
 @media only screen and (max-width: 550px) {
 
   .sub-header-drop-down{
@@ -534,7 +546,17 @@
 .comment-input{
   width: 97%;
 }
-
-
+.comment-post {
+  color: #233d4d;
+  text-align: left;
+  margin: 1vh;
+  height: 80%;
+  display: flex;
+ flex-direction:column;
+ justify-content: center;
+  background-color: #fefae0;
+  border-radius: 10px;
+  padding: 2vh 4vh 2vh 4vh
+}
 
 }

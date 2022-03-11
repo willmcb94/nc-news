@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom"
 import { fetchTopics } from "../api"
 
 const TopicsDropdown = ({ paramTopic, paramSort }) => {
-    const [setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
     if (paramTopic === undefined) {
         paramTopic = 'all'
     }
