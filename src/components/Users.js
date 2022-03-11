@@ -23,8 +23,8 @@ const Users = () => {
     return (
         <section className="users-contain">
             {
-                users.map(user => {
-                    return <UserCard username={user.username} avatar_url={user.avatar_url} />
+                users.map((user, index) => {
+                    return <UserCard key={`user${index}`} username={user.username} avatar_url={user.avatar_url} />
                 })}
         </section>
     )

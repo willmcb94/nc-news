@@ -17,6 +17,7 @@ const ArticlePage = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [voteChange, setVoteChange] = useState(0);
     const [showComments, setShowComments] = useState(false)
+    const [error, setError] = useState(null)
 
 
     useEffect(() => {
@@ -26,8 +27,15 @@ const ArticlePage = () => {
             setArticle(article)
             setIsLoading(false)
 
+        }).catch((err) => {
+
+            setError(err);
+
         })
+
     }, [article_id, showComments])
+
+    console.error(error)
 
     const handleVote = async (votecrement) => {
 
@@ -40,7 +48,9 @@ const ArticlePage = () => {
         }
     }
 
-
+    if (error) {
+        return <h2>Oops somethings gone wrong</h2>
+    }
     if (isLoading) {
         return <h2>Loading...</h2>
     }

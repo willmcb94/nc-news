@@ -18,14 +18,13 @@ const Articles = () => {
 
     useEffect(() => {
 
-
         fetchArticles(paramTopic, paramSort).then((articles) => {
 
             setArticles(articles)
             setIsLoading(false)
         })
 
-
+        return isLoading ? false : true
     }, [paramTopic, paramSort])
 
     if (isLoading) {

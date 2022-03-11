@@ -6,6 +6,8 @@ import { UserContext } from '../contexts.js/UserContext';
 
 const PostComment = ({ id, setComments }) => {
     const { user } = useContext(UserContext)
+    const [success, setSuccess] = useState(null)
+    const [err, setErr] = useState(null)
     const initialValues = {
         username: user,
         body: ""
@@ -24,35 +26,53 @@ const PostComment = ({ id, setComments }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSuccess(null)
+        setErr(null)
         try {
-            const comment = await postComment(id, postValue)
-            console.log(comment)
+
             if (postValue.body.length < 1) {
+
                 throw Error
+
             }
-            alert(`Comment posted - ${comment.body}`)
+            const comment = await postComment(id, postValue)
+
+
+            setSuccess(`Comment posted`)
+
             setComments((currentComments) => {
+
                 return [...currentComments, comment]
+
             })
             setPostValue(initialValues)
         } catch (err) {
-            console.dir(err)
-            alert(`Comment failed to post - please makes sure you are signed in and try again`)
+
+            if (postValue.body.length < 1) {
+
+                setErr('Comment too short')
+
+            } else {
+
+                setErr('Comment unsuccesful - please sign in if not already')
+            }
         }
 
     }
 
     return (<section className="comment-post">
+
         <h3>Post a comment</h3>
 
         <form className="comment-form" id="add-comment" onSubmit={handleSubmit}>
-            <input className="comment-input" type="text" onChange={set("body")}
-                value={postValue.body}></input>
+            <textarea className="comment-input" type="text" onChange={set("body")}
+                value={postValue.body} rows="4" cols="50" ></textarea>
             <Button type="submit" variant="contained" size="small" color="inherit" endIcon={<SendIcon />}>
                 Submit
             </Button>
         </form>
-
+        <dt className="err-success">{success}</dt>
+        <dt className="err-success">{err}</dt>
 
     </section>)
 }

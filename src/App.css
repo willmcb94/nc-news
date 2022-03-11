@@ -279,6 +279,7 @@
   width: 70%;
   display: grid;
   grid-template-columns: 80%;
+  align-items: center;
   justify-content: center;
 
 }
@@ -302,6 +303,7 @@
   color: #233d4d;
   text-align: left;
   margin: 1vh;
+  height: 50%;
   background-color: #fefae0;
   border-radius: 10px;
   padding: 2vh 4vh 2vh 4vh
@@ -343,10 +345,9 @@
 
 .users-contain{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
   margin: 5vh;
   grid-gap: 3vh;
-
 }
 .sign-in {
   color: #fcca46;
@@ -369,7 +370,20 @@
   color: #fcca46;
 }
 
+.hidden {
+  display: none;
+}
 
+.delete-holder {
+  
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.err-success {
+  padding-top: 1vh;
+  font-size: 2vh;
+}
 @media only screen and (max-width: 550px) {
 
   .sub-header-drop-down{
@@ -519,6 +533,12 @@
   justify-content: center;
 
 }
+.users-contain{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 2vh;
+  grid-gap: 3vh;
+}
 }
 @media only screen and (max-width: 1100px) {
 .comment-form {
@@ -531,7 +551,17 @@
 .comment-input{
   width: 97%;
 }
-
-
+.comment-post {
+  color: #233d4d;
+  text-align: left;
+  margin: 1vh;
+  height: 80%;
+  display: flex;
+ flex-direction:column;
+ justify-content: center;
+  background-color: #fefae0;
+  border-radius: 10px;
+  padding: 2vh 4vh 2vh 4vh
+}
 
 }

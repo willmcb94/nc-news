@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom"
 
 
 const Sort = ({ paramSort, paramTopic }) => {
-    const [setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
 
 
     if (paramSort === undefined) {

@@ -6,11 +6,11 @@ export const fetchArticles = (topic, sort_by) => {
 
 
     const params = { topic, sort_by }
-    console.log(topic, sort_by)
+
     return axios
         .get(`https://will-nc-news.herokuapp.com/api/articles`, { params })
         .then(({ data: { articles } }) => {
-            console.log(articles)
+
             return articles
         })
 
@@ -63,11 +63,16 @@ export const getUsers = () => {
 
 export const postComment = ({ id }, body) => {
 
-    console.log(id)
+
     return axios
         .post(`https://will-nc-news.herokuapp.com/api/articles/${id}/comments`, body)
         .then(({ data: { comment } }) => {
-            console.log(comment)
+
             return comment
         })
+}
+
+export const commentDelete = (id) => {
+    return axios
+        .delete(`https://will-nc-news.herokuapp.com/api/comments/${id}`)
 }
