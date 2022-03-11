@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router"
+
+import { useSearchParams } from "react-router-dom"
 import { fetchTopics } from "../api"
 
-const TopicsDropdown = ({ paramTopic, isLoading, setIsLoading }) => {
-
+const TopicsDropdown = ({ paramTopic, paramSort }) => {
+    const [setSearchParams] = useSearchParams()
     if (paramTopic === undefined) {
-        paramTopic = 'All'
+        paramTopic = 'all'
     }
 
     const [topics, setTopics] = useState([])
 
-    let navigate = useNavigate()
+
 
     useEffect(() => {
 
@@ -23,11 +24,23 @@ const TopicsDropdown = ({ paramTopic, isLoading, setIsLoading }) => {
 
     const handleChange = ({ target: { value } }) => {
 
-        if (value === 'All') {
-            navigate(`/articles`)
+        if (value === 'all') {
+            const params = {}
+            if (paramSort) {
+                params.sort_by = paramSort
+            }
+
+            setSearchParams(params)
 
         } else {
-            navigate(`/articles?topic=${value}`)
+            const params = {
+                topic: value,
+
+            }
+            if (paramSort) {
+                params.sort_by = paramSort
+            }
+            setSearchParams(params)
 
         }
     }
@@ -38,7 +51,7 @@ const TopicsDropdown = ({ paramTopic, isLoading, setIsLoading }) => {
             <label className="dropdown-label" htmlFor="topic">Topics:</label>
             <select className="dropdown-options" name="topics" id="topics" onChange={(e) => handleChange(e)} value={`${paramTopic}`}>
 
-                <option key="All" value="All">All</option>
+                <option key="all" value="all">all</option>
                 {topics.map((topic, index) => {
                     if (paramTopic === topic.slug) {
                         return <option key={`topic-${index}`} value={topic.slug} >{topic.slug}</option>

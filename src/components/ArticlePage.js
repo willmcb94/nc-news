@@ -62,7 +62,7 @@ const ArticlePage = () => {
                             <dt>{`Topic: ${article.topic}`}</dt>
                             <dt>{article.date}</dt>
 
-                            <IconButton onClick={() => { setShowComments(showComments => !showComments) }}><CommentIcon className="view-comment" /> </IconButton>
+                            <IconButton color="inherit" onClick={() => { setShowComments(showComments => !showComments) }}><CommentIcon className="view-comment" /><dt className="comment-count">{article.comment_count}</dt></IconButton>
                         </span>
                     </span>
                 </article>

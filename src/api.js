@@ -1,23 +1,19 @@
 import axios from "axios";
 
 
-export const fetchArticles = (topic) => {
 
-    // if (!topic) {
-    const params = { topic }
+export const fetchArticles = (topic, sort_by) => {
+
+
+    const params = { topic, sort_by }
+    console.log(topic, sort_by)
     return axios
         .get(`https://will-nc-news.herokuapp.com/api/articles`, { params })
         .then(({ data: { articles } }) => {
-
+            console.log(articles)
             return articles
         })
-    // } else {
-    //     return axios
-    //         .get(`https://will-nc-news.herokuapp.com/api/articles?topic=${topic}`)
-    //         .then(({ data: { articles } }) => {
-    //             return articles
-    //         })
-    // }
+
 }
 
 export const fetchTopics = () => {

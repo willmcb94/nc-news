@@ -1,11 +1,13 @@
 import SendIcon from '@mui/icons-material/Send';
 import { Button } from "@mui/material"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { postComment } from '../api';
+import { UserContext } from '../contexts.js/UserContext';
 
 const PostComment = ({ id, setComments }) => {
+    const { user } = useContext(UserContext)
     const initialValues = {
-        username: "jessjelly",
+        username: user,
         body: ""
 
     };
@@ -25,14 +27,17 @@ const PostComment = ({ id, setComments }) => {
         try {
             const comment = await postComment(id, postValue)
             console.log(comment)
+            if (postValue.body.length < 1) {
+                throw Error
+            }
             alert(`Comment posted - ${comment.body}`)
             setComments((currentComments) => {
                 return [...currentComments, comment]
             })
             setPostValue(initialValues)
         } catch (err) {
-            console.log(err)
-            alert(`Comment failed to post - please try again`)
+            console.dir(err)
+            alert(`Comment failed to post - please makes sure you are signed in and try again`)
         }
 
     }

@@ -9,6 +9,7 @@ const Comments = (id) => {
     const [comments, setComments] = useState([])
 
 
+
     useEffect(() => {
         getComments(id).then((commentsGot) => {
 

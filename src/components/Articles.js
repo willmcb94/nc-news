@@ -4,33 +4,29 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { fetchArticles } from "../api"
 import ArticleCard from "./ArticleCard"
+import Sort from "./Sort"
 import TopicsDropdown from "./TopicsDropdown"
 
 
 const Articles = () => {
     const [searchParams] = useSearchParams()
     const paramTopic = searchParams.get('topic')
+    const paramSort = searchParams.get('sort_by')
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() => {
-        setIsLoading(true)
-        if (!paramTopic) {
-            fetchArticles().then((articles) => {
 
-                setArticles(articles)
-                setIsLoading(false)
-            })
-        } else {
-            fetchArticles(paramTopic).then((articles) => {
 
-                setArticles(articles)
-                setIsLoading(false)
-            })
-        }
+        fetchArticles(paramTopic, paramSort).then((articles) => {
 
-    }, [paramTopic])
+            setArticles(articles)
+            setIsLoading(false)
+        })
+
+
+    }, [paramTopic, paramSort])
 
     if (isLoading) {
         return <h2>Loading...</h2>
@@ -44,7 +40,10 @@ const Articles = () => {
                     <h2 className="sub-header">Articles</h2>
                 </div>
                 <div className="topics-dropdown-div">
-                    <TopicsDropdown paramTopic={paramTopic} isLoading={isLoading} setIsLoading={setIsLoading} />
+
+                    <TopicsDropdown paramTopic={paramTopic} paramSort={paramSort} />
+                    <Sort paramSort={paramSort} paramTopic={paramTopic} />
+
                 </div>
             </div>
             <section className="articles-container">

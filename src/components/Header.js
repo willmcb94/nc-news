@@ -1,7 +1,18 @@
+
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import { UserContext } from "../contexts.js/UserContext";
 
 
 const Header = () => {
+
+
+    const { user, setUser } = useContext(UserContext);
+
+    const handleSignIn = () => {
+        setUser("")
+
+    }
     return (
         <section>
             <div className="header-nav">
@@ -11,7 +22,7 @@ const Header = () => {
                     <ul className="nav-ul">
                         <Link to="/articles" className="nav-text link">Articles</Link>
                         <Link to="/users" className="nav-text link">Users</Link>
-                        <li className="nav-text link">Sign in</li>
+                        {user === "" ? <Link to="/users" className="nav-text link">Sign in</Link> : <li onClick={handleSignIn} className="nav-text link sign-out">{user} Sign out</li>}
                     </ul>
                 </nav>
             </div>
