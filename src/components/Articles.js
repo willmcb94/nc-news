@@ -24,7 +24,7 @@ const Articles = () => {
             setIsLoading(false)
         })
 
-
+        return isLoading ? false : true
     }, [paramTopic, paramSort])
 
     if (isLoading) {

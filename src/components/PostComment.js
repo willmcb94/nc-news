@@ -38,7 +38,7 @@ const PostComment = ({ id, setComments }) => {
             const comment = await postComment(id, postValue)
 
 
-            setSuccess(`Comment posted - ${comment.body}`)
+            setSuccess(`Comment posted`)
 
             setComments((currentComments) => {
 

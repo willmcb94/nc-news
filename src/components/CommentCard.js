@@ -6,13 +6,14 @@ import { UserContext } from "../contexts.js/UserContext"
 const CommentCard = ({ author, body, date, comment_id, setComments, comments }) => {
 
     const { user } = useContext(UserContext)
-    date = `${date.slice(0, 10)} ${date.slice(11, 16)} `
+
+    if (date) { date = `${date.slice(0, 10)} ${date.slice(11, 16)}` }
+
+
     const handleDelete = async () => {
         const deleted = comments.filter(comment => {
             return comment.comment_ud === comment_id
         })
-
-        console.log(deleted)
 
         try {
             setComments((currentComments) => {
@@ -35,7 +36,7 @@ const CommentCard = ({ author, body, date, comment_id, setComments, comments }) 
         <section className="comment-card">
             <h3>{author}</h3>
             <p>{body}</p>
-            <dt>{date}</dt>
+            <dt>{date || 'today'}</dt>
             <div className="delete-holder">
                 {user === author ? <Button size="small" variant="outlined" color="error" onClick={() => handleDelete(comment_id)}>
                     Delete
