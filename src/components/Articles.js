@@ -18,7 +18,6 @@ const Articles = () => {
 
     useEffect(() => {
 
-
         fetchArticles(paramTopic, paramSort).then((articles) => {
 
             setArticles(articles)
