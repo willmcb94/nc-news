@@ -35,7 +35,8 @@ const ArticlePage = () => {
 
     }, [article_id, showComments])
 
-    console.error(error)
+
+
 
     const handleVote = async (votecrement) => {
 
@@ -43,6 +44,7 @@ const ArticlePage = () => {
         try {
             await patchArticleVote(article.article_id, { inc_votes: votecrement })
         } catch (err) {
+
             setVoteChange(voteChange - votecrement)
             alert("Vote unsuccesful please try again")
         }

@@ -10,11 +10,18 @@ const Users = () => {
 
 
     useEffect(() => {
+        let isMounted = true;
         getUsers().then((users) => {
-            setUsers(users)
-            setIsLoading(false)
+            if (isMounted) {
+                setUsers(users)
+                setIsLoading(false)
+            }
+
         })
-    })
+        return () => {
+            isMounted = false;
+        }
+    }, [users])
 
     if (isLoading) {
         return <h2>Loading...</h2>

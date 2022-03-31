@@ -14,18 +14,26 @@ const Articles = () => {
     const paramSort = searchParams.get('sort_by')
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
 
 
     useEffect(() => {
 
+        setError(null)
         fetchArticles(paramTopic, paramSort).then((articles) => {
 
             setArticles(articles)
             setIsLoading(false)
+        }).catch((err) => {
+            setError(err)
         })
 
-        return isLoading ? false : true
+
     }, [paramTopic, paramSort])
+
+    if (error) {
+        return <h2>Oops somethings gone wrong</h2>
+    }
 
     if (isLoading) {
         return <h2>Loading...</h2>
