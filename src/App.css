@@ -43,6 +43,13 @@
 .nav {
   display: flex;
   justify-content: center;
+  min-width: 300px;
+  width: 100%;
+  margin-top: 0;
+  margin-right: 0vh;
+  top: 0;
+  position: fixed;
+  height: 6vh;
 }
 
 .nav-ul {
